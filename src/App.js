@@ -310,7 +310,7 @@ const App = () => {
           style={{
             marginLeft: "5%",
             color: "white",
-            fontSize: "20px",
+            fontSize: "21px",
             fontFamily: "Jalnan",
           }}
         >
