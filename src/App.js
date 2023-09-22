@@ -144,7 +144,7 @@ const App = () => {
     },
     {
       title: "엑스포 다리",
-      latlng: { lat: 36.3716644, lng: 127.3880323 },
+      latlng: { lat: 36.3716644, lng: 127.3880324 },
       img: "https://ifh.cc/g/oabLrQ.jpg",
       imgs: "https://ifh.cc/g/oabLrQ.jpg@https://ifh.cc/g/oo7gHX.jpg@https://ifh.cc/g/Tjnr97.jpg@https://ifh.cc/g/sLJdAg.jpg",
       address: "대한민국 대전광역시 유성구 도룡동 ",
