@@ -224,11 +224,13 @@ const App = () => {
       }}
     >
       <Map
-        center={{ lat: mapCenterLat === null? latPosition : mapCenterLat, lng: mapCenterLng === null? lngPosition : mapCenterLng }}
+        center={{ lat: mapCenterLat === null ? latPosition : mapCenterLat , lng : mapCenterLng === null ? lngPosition : mapCenterLng}}
         style={{ width: "100%", height: "100%", zIndex: 0 }}
         level={3}
       >
-        <MapMarker position={ {let : latPosition, lng : lngPosition}}></MapMarker>
+        {latPosition !== null && lngPosition !== null && (
+          <MapMarker position={{ lat: latPosition, lng: lngPosition }} />
+        )}
         {positions.map((position, index) => (
           <MapMarker
             key={`${position.title}-${position.latlng}-${position.img}-${position.imgs}`}
