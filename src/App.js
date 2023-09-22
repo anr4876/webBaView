@@ -1,5 +1,5 @@
 /*global kakao*/
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Map, MapMarker, MapTypeId } from "react-kakao-maps-sdk";
 
 const App = () => {
@@ -160,14 +160,38 @@ const App = () => {
     },
   ];
 
+  
   const [mapAddress, setMapAddress] = useState(null);
   const [mapText, setMapText] = useState(null);
   const [mapWidth, setMapWidth] = useState("0");
-  const [mapCenterLat, setMapCenterLat] = useState(36.35327479294623);
-  const [mapCenterLng, setMapCenterLng] = useState(127.34157198031791);
+  const [mapCenterLat, setMapCenterLat] = useState(null);
+  const [mapCenterLng, setMapCenterLng] = useState(null);
   const [mapTitle, setMapTitle] = useState(null);
   const [mapImgs, setMapImgs] = useState(null);
   // 클릭한 마커 정보를 저장할 상태 추가
+
+  const [latPosition, setLatPosition] = useState(null);
+  const [lngPosition, setLngPosition] = useState(null);
+
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLatPosition(latitude);
+          setLngPosition(longitude);
+        },
+        (error) => {
+          console.error("현재 위치를 가져오는 중 에러 발생:", error);
+        }
+      );
+    } else {
+      console.error("이 브라우저에서는 Geolocation을 지원하지 않습니다.");
+    }
+  }, []);
+
+
 
   // 마커를 클릭할 때 호출되는 함수
   const handleMarkerClick = (mlat, mlng, title, imgs, address, text) => {
@@ -200,11 +224,11 @@ const App = () => {
       }}
     >
       <Map
-        center={{ lat: mapCenterLat, lng: mapCenterLng }}
+        center={{ lat: mapCenterLat === null? latPosition : mapCenterLat, lng: mapCenterLng === null? lngPosition : mapCenterLng }}
         style={{ width: "100%", height: "100%", zIndex: 0 }}
         level={3}
       >
-        <button></button>
+        <MapMarker position={ {let : latPosition, lng : lngPosition}}></MapMarker>
         {positions.map((position, index) => (
           <MapMarker
             key={`${position.title}-${position.latlng}-${position.img}-${position.imgs}`}
