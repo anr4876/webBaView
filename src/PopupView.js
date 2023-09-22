@@ -12,12 +12,13 @@ export default function PopupView({title, images, address, description, onCloseC
             <button class="popup-view-close-btn" onClick={onCloseClicked}>X</button>
             <div class="popup-view-title">{title}</div>
             <div class="popup-view-address">{address}</div>
+
             {
                 description && <div class="popup-view-description">{description}</div>
             }
             <ul class="popup-view-images">
                 {
-                    images &&images.map(img => <li><img src={img} /></li>)
+                    images &&images.map(img => <li><img src={img} alt={img}/></li>)
                 }
             </ul>
         </div>
