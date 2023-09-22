@@ -48,6 +48,7 @@
 }
 
 .popup-view-images {
+    alt: "";
     display: flex;
     flex: 1;
     gap: 1rem;
@@ -57,8 +58,6 @@
     overflow-x: scroll;
     overflow-y: clip;
 }
-
-
 
 .popup-view-images::-webkit-scrollbar {
     width: 10px;
