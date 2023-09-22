@@ -246,7 +246,7 @@ const App = () => {
         style={{
           position: "absolute",
           width: `${mapWidth}`,
-          marginTop: "29.5%",
+          marginTop: "20%",
           height: "45%",
           background:
             "linear-gradient(180deg, #3693FF 0%, rgba(54, 147, 255, 0.37) 99.99%, rgba(54, 147, 255, 0) 100%)",
@@ -342,7 +342,7 @@ const App = () => {
           position: "absolute",
           transition: "width 0.5s",
           width: `${mapWidth}`,
-          marginTop: "29.5%",
+          marginTop: "20%",
           height: "45%",
           background: "white", // 흰색 배경
           borderRadius: "30px 30px 30px 30px",
