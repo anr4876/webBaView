@@ -295,7 +295,7 @@ const App = () => {
                 <img
                   key={index}
                   src={imageUrl}
-                  alt={`Image ${index}`}
+                  alt="bikeView"
                   style={{
                     flex: "1",
                     margin: "0.5%",
