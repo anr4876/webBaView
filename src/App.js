@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Map, MapMarker, MapTypeId } from "react-kakao-maps-sdk";
 
 const App = () => {
-  const [mapTypeIds, setMapTypeIds] = useState([kakao.maps.MapTypeId.BICYCLE]);
-
+  const mapTypeIds = [kakao.maps.MapTypeId.BICYCLE];
+  
   const positions = [
     {
       title: "흥도초등학교 앞 돌다리",
@@ -168,12 +168,10 @@ const App = () => {
   const [mapTitle, setMapTitle] = useState(null);
   const [mapImgs, setMapImgs] = useState(null);
   // 클릭한 마커 정보를 저장할 상태 추가
-  const [selectedMarker, setSelectedMarker] = useState(null);
 
   // 마커를 클릭할 때 호출되는 함수
   const handleMarkerClick = (mlat, mlng, title, imgs, address, text) => {
     // 클릭한 마커의 정보를 상단에 표시하고, 해당 마커의 좌표로 지도의 중심 좌표를 설정
-    setSelectedMarker(title);
     setMapCenterLat(mlat);
     setMapCenterLng(mlng);
     setMapTitle(title);
@@ -192,6 +190,7 @@ const App = () => {
     setMapImgs(null); // 창을 숨기기 위해 mapWidth를 0으로 설정
   };
 
+
   return (
     <div
       style={{
@@ -205,6 +204,7 @@ const App = () => {
         style={{ width: "100%", height: "100%", zIndex: 0 }}
         level={3}
       >
+        <button></button>
         {positions.map((position, index) => (
           <MapMarker
             key={`${position.title}-${position.latlng}-${position.img}-${position.imgs}`}
@@ -295,7 +295,6 @@ const App = () => {
                 <img
                   key={index}
                   src={imageUrl}
-                  alt={`Image ${index}`}
                   style={{
                     flex: "1",
                     margin: "0.5%",
