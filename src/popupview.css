@@ -33,7 +33,7 @@
 }
 
 .popup-view-address, .popup-view-description {
-    font-size: 1em;
+    font-size: 0.4em;
     margin-bottom: 0.25rem;
     color: white;
 }
@@ -48,7 +48,6 @@
 }
 
 .popup-view-images {
-    alt: "1";
     display: flex;
     flex: 1;
     gap: 1rem;

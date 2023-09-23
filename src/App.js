@@ -1,14 +1,14 @@
 /*global kakao*/
 import React, { useState,useEffect } from "react";
-import { Map, MapMarker, MapTypeId } from "react-kakao-maps-sdk";
+import { Map, MapMarker, MapTypeId, } from "react-kakao-maps-sdk";
 import PopupView from "./PopupView";
+
 
 //분리
 import { positions } from "./data"
 
 const App = () => {
   const mapTypeIds = [kakao.maps.MapTypeId.BICYCLE];
-  
   const [mapAddress, setMapAddress] = useState(null);
   const [mapText, setMapText] = useState(null);
   // const [mapWidth, setMapWidth] = useState("0");
@@ -25,13 +25,16 @@ const App = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
 
 
+
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setLatPosition(latitude);
-          setLngPosition(longitude);
+        () => {
+          // const { latitude, longitude } = position.coords;
+          // setLatPosition(latitude);
+          // setLngPosition(longitude);
+          setLatPosition(36.35397739857084);
+          setLngPosition(127.34168088820714);
         },
         (error) => {
           console.error("현재 위치를 가져오는 중 에러 발생:", error);
@@ -71,40 +74,36 @@ const App = () => {
         {latPosition !== null && lngPosition !== null && (
           <MapMarker position={{ lat: latPosition, lng: lngPosition }} />
         )}
+
         {positions.map((position, index) => (
           <MapMarker
-            key={`${position.title}-${position.latlng}-${position.img}-${position.imgs}`}
-            position={position.latlng}
-            image={{
-              src: position.img,
-              size: {
-                width: 64,
-                height: 69,
-              },
-              options: {
-                offset: {
-                  x: 27,
-                  y: 69,
-                },
-              },
-            }}
-            onClick={() =>
-              handleMarkerClick(
-                position.latlng.lat,
-                position.latlng.lng,
-                position.title,
-                position.imgs,
-                position.address,
-                position.text
+          key={`${position.title}-${position.latlng}-${position.img}-${position.imgs}`}
+          position={position.latlng}
+          image={{
+            src: position.img,
+            size: {
+              width: 180,
+              height: 100,
+            },
+            
+          }}
+          onClick={() =>
+            handleMarkerClick(
+              position.latlng.lat,
+              position.latlng.lng,
+              position.title,
+              position.imgs,
+              position.address,
+              position.text
               )
             }
             title={position.title}
-          ></MapMarker>
-        ))}
+            ></MapMarker>
+            ))}
 
         {mapTypeIds.map((mapTypeId) => (
           <MapTypeId key={mapTypeId} type={mapTypeId} />
-        ))}
+          ))}
       </Map>
 
       <PopupView
@@ -113,7 +112,7 @@ const App = () => {
           bottom: "1.5rem",
           width: "94%",
           left: "3%",
-          height: "35%"
+          height: "43%"
         }}
         title={mapTitle}
         images={mapImgs}

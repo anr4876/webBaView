@@ -8,15 +8,15 @@ export default function PopupView({title, images, address, description, onCloseC
         "hidden": !isVisible,
     };
     return (
-        <div class="popup-view" className={toggleClassList(classList)} style={style}>
-            <button class="popup-view-close-btn" onClick={onCloseClicked}>X</button>
-            <div class="popup-view-title">{title}</div>
-            <div class="popup-view-address">{address}</div>
+        <div className="popup-view" class={toggleClassList(classList)} style={style}>
+            <button className="popup-view-close-btn" onClick={onCloseClicked}>X</button>
+            <div className="popup-view-title">{title}</div>
+            <div className="popup-view-address">{address}</div>
 
             {
-                description && <div class="popup-view-description">{description}</div>
+                description && <div className="popup-view-description">{description}</div>
             }
-            <ul class="popup-view-images">
+            <ul className="popup-view-images">
                 {
                     images &&images.map(img => <li><img src={img} alt={img}/></li>)
                 }
