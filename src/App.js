@@ -29,12 +29,10 @@ const App = () => {
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        () => {
-          // const { latitude, longitude } = position.coords;
-          // setLatPosition(latitude);
-          // setLngPosition(longitude);
-          setLatPosition(36.35397739857084);
-          setLngPosition(127.34168088820714);
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLatPosition(latitude);
+          setLngPosition(longitude);
         },
         (error) => {
           console.error("현재 위치를 가져오는 중 에러 발생:", error);
